@@ -11,26 +11,21 @@
         this.cargo = cargo;
     }
 
-
     public int getId() {
         return id;
     }
-
 
     public String getNome() {
         return nome;
     }
 
-
     public String getCargo() {
         return cargo;
     }
 
-
     public void setCargo(String cargo) {
         this.cargo = cargo;
     }
-
 
     @Override
     public String toString() {
