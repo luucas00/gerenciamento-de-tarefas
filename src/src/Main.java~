@@ -17,7 +17,6 @@ public class Main {
             System.out.println("4. Atribuir responsável");
             System.out.println("5. Cadastrar responsável");
             System.out.println("6. Sair");
-            System.out.println("7. Listar todas as tarefas");
             System.out.print("Escolha uma opção: ");
 
             int opcao = scanner.nextInt();
@@ -44,6 +43,7 @@ public class Main {
                     int idCategoria = scanner.nextInt();
                     scanner.nextLine();
 
+                    // Criar categoria só com id e nome genérico (ou poderia ter cadastro separado)
                     Categoria categoria = new Categoria(idCategoria, "Categoria " + idCategoria);
 
                     Tarefa tarefa = new Tarefa(id, titulo, descricao, categoria);
@@ -166,18 +166,6 @@ public class Main {
                 case 6 -> {
                     System.out.println("Saindo...");
                     rodando = false;
-                }
-
-                case 7 -> { // Listar todas as tarefas
-                    List<Tarefa> tarefas = manager.listarTarefas();
-                    if (tarefas.isEmpty()) {
-                        System.out.println("Nenhuma tarefa cadastrada.");
-                    } else {
-                        System.out.println("Lista de Tarefas:");
-                        for (Tarefa t : tarefas) {
-                            System.out.println(t);
-                        }
-                    }
                 }
 
                 default -> System.out.println("Opção inválida. Tente novamente.");

@@ -1,18 +1,26 @@
 public class Tarefa {
 
+    public enum Status {
+        ABERTO,
+        EM_ANDAMENTO,
+        CONCLUIDA,
+        CANCELADA
+    }
+
     private final int id;
     private final String titulo;
     private final String descricao;
-    private String status;
+    private Status status;
     private final Categoria categoria;
     private Colaborador responsavel;
 
-    public Tarefa(int id, String titulo, String descricao, String status, Categoria categoria) {
+    public Tarefa(int id, String titulo, String descricao, Categoria categoria) {
         this.id = id;
         this.titulo = titulo;
         this.descricao = descricao;
-        this.status = status;
         this.categoria = categoria;
+        this.status = Status.ABERTO; // status padrão
+        this.responsavel = null;
     }
 
     public int getId() {
@@ -27,11 +35,11 @@ public class Tarefa {
         return descricao;
     }
 
-    public String getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 
@@ -49,13 +57,9 @@ public class Tarefa {
 
     @Override
     public String toString() {
-        String nomeResponsavel = (responsavel != null) ? responsavel.getNome() : "Nenhum responsável atribuído";
-
-        return "Tarefa ID: " + id +
-                "\nTítulo: " + titulo +
-                "\nDescrição: " + descricao +
-                "\nStatus: " + status +
-                "\nCategoria: " + categoria.getNome() +
-                "\nResponsável: " + nomeResponsavel + "\n";
+        String nomeResp = (responsavel != null) ? responsavel.getNome() : "Nenhum responsável atribuído";
+        return "ID: " + id + "\nTítulo: " + titulo + "\nDescrição: " + descricao +
+                "\nStatus: " + status + "\nCategoria: " + categoria.getNome() +
+                "\nResponsável: " + nomeResp + "\n";
     }
 }

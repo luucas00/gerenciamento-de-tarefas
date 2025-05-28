@@ -1,0 +1,71 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class TarefaManager {
+
+    private final List<Tarefa> tarefas = new ArrayList<>();
+
+    // Adiciona uma nova tarefa à lista
+    public void adicionarTarefa(Tarefa tarefa) {
+        tarefas.add(tarefa);
+    }
+
+    // Remove tarefa(s) pelo título, retorna true se removeu pelo menos uma
+    public boolean removerTarefaPorTitulo(String titulo) {
+        return tarefas.removeIf(t -> t.getTitulo().equalsIgnoreCase(titulo));
+    }
+
+    // Lista todas as tarefas cadastradas
+    public void listarTarefas() {
+        if (tarefas.isEmpty()) {
+            System.out.println("Nenhuma tarefa cadastrada.");
+        } else {
+            for (Tarefa t : tarefas) {
+                System.out.println(t);
+            }
+        }
+    }
+
+    // Altera o status da tarefa pelo ID, retorna true se sucesso, false se não encontrou
+    public boolean alterarStatus(int id, String novoStatus) {
+        for (Tarefa t : tarefas) {
+            if (t.getId() == id) {
+                t.setStatus(Tarefa.StatusTarefa.valueOf(novoStatus));
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // Busca e retorna lista de tarefas cujo título contenha o termo passado
+    public List<Tarefa> buscarTarefaPorTitulo(String termo) {
+        List<Tarefa> resultados = new ArrayList<>();
+        for (Tarefa t : tarefas) {
+            if (t.getTitulo().toLowerCase().contains(termo.toLowerCase())) {
+                resultados.add(t);
+            }
+        }
+        return resultados;
+    }
+
+    // Verifica se um ID já está sendo usado (para evitar duplicação)
+    public boolean existeId(int id) {
+        for (Tarefa t : tarefas) {
+            if (t.getId() == id) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public Tarefa buscarTarefaPorId(int id) {
+        for (Tarefa t : tarefas) {
+            if (t.getId() == id) {
+                return t;
+            }
+        }
+        return null; // não encontrou a tarefa com esse id
+    }
+
+
+}

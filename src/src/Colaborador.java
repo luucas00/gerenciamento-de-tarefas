@@ -22,6 +22,6 @@ public class Colaborador {
 
     @Override
     public String toString() {
-        return "Colaborador ID: " + id + ", Nome: " + nome;
+        return "ID: " + id + ", Nome: " + nome;
     }
 }
