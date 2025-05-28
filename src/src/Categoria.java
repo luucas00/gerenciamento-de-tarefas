@@ -1,31 +1,27 @@
 public class Categoria {
 
-    private final int id; // Identificador
-    private String nome; // Nome da Categoria
+    private final int id;
+    private String nome;
 
-    // Construtor
-    public Categoria(int id, String nome){
+    public Categoria(int id, String nome) {
         this.id = id;
         this.nome = nome;
     }
 
-    //Getters
-    public int GetId(){
+    public int getId() {
         return id;
     }
 
-    public String GetNome(){
+    public String getNome() {
         return nome;
     }
 
-    //Setters
-    public void setNome(String nome){
+    public void setNome(String nome) {
         this.nome = nome;
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return id + ": " + nome;
     }
-
 }

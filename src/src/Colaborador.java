@@ -1,14 +1,11 @@
- public class Colaborador{
+public class Colaborador {
 
     private final int id;
-    private final String nome;
-    private String cargo;
+    private String nome;
 
-
-    public Colaborador(int id, String nome, String cargo) {
+    public Colaborador(int id, String nome) {
         this.id = id;
         this.nome = nome;
-        this.cargo = cargo;
     }
 
     public int getId() {
@@ -19,16 +16,12 @@
         return nome;
     }
 
-    public String getCargo() {
-        return cargo;
-    }
-
-    public void setCargo(String cargo) {
-        this.cargo = cargo;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     @Override
     public String toString() {
-        return id + ": " + nome + " (" + cargo + ")";
+        return "Colaborador ID: " + id + ", Nome: " + nome;
     }
 }
